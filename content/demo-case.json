@@ -1,0 +1,96 @@
+{
+  "_about": "Web mini-case «Ο Φούρνος της Γωνίας», in the app's own case format (src/lib/scenario/types.ts), so the game's validate-case.js and simulate-case.mjs check it as they check the five app cases (tools/check-demo.mjs). Shares nothing with them. Solution: Στέλιος, the nephew, because he owed money. The new safe code was known only to the family (the call); the flour prints are size 44 trainers (the storeroom); the same trainers sit freshly washed on his balcony; the driver has a GPS alibi; Μαρίνα did not know the new code. Site-only matter (pictures, the camera clip, the time-out ending) lives under \"site\", which the app's tools ignore.",
+  "id": "demo-fournos",
+  "title": "Ο Φούρνος της Γωνίας",
+  "subtitle": "Μίνι υπόθεση — Πάφος, παλιά πόλη",
+  "date": "Τρίτη 13 Οκτωβρίου 2026",
+  "teaser": "Ένας φούρναρης στο πάτωμα της αποθήκης του και ένα χρηματοκιβώτιο ανοιχτό χωρίς ούτε μια γρατζουνιά.",
+  "briefing": "Πάφος, παλιά πόλη, πέντε το πρωί. Η Μαρίνα, η υπάλληλος, άνοιξε τον φούρνο και βρήκε το αφεντικό της, τον κύριο Ανδρέα, στο πάτωμα της αποθήκης. Δεν θα σηκωθεί ξανά. Το χρηματοκιβώτιο ήταν ανοιχτό και άδειο. Η αστυνομία λέει ληστεία από κάποιον άγνωστο. Έχετε δύο ώρες να βρείτε την αλήθεια: ποιος ήταν, και γιατί.",
+  "timeBudgetMinutes": 120,
+  "startLocationId": "bakery",
+  "localTravelMinutes": 20,
+  "siteTravelMinutes": 5,
+  "cities": { "paphos": { "name": "Πάφος", "x": 0.116, "y": 0.713 } },
+  "travelMinutes": {},
+  "characters": [
+    { "id": "andreas", "name": "Ανδρέας Κωνσταντίνου", "role": "ο φούρναρης", "knownFromStart": true, "standing": "victim" },
+    { "id": "marina", "name": "Μαρίνα Χριστοδούλου", "role": "η υπάλληλος, βρήκε το πτώμα", "knownFromStart": true, "standing": "suspect" },
+    { "id": "stelios", "name": "Στέλιος Κωνσταντίνου", "role": "ο ανιψιός", "knownFromStart": true, "standing": "suspect" },
+    { "id": "giannis", "name": "Γιάννης Πέτρου", "role": "ο διανομέας", "knownFromStart": false, "standing": "suspect" }
+  ],
+  "locations": [
+    {
+      "id": "bakery", "city": "paphos", "site": "fournos", "name": "Ο φούρνος — η αποθήκη", "address": "Παλιά πόλη, Πάφος",
+      "description": "Σακιά με αλεύρι ως το ταβάνι, ένα χρηματοκιβώτιο στον τοίχο, και η πίσω πόρτα μισάνοιχτη προς το στενό.",
+      "searchMinutes": 25, "evidenceIds": ["safe", "prints"]
+    },
+    {
+      "id": "alley", "city": "paphos", "site": "fournos", "name": "Το στενό πίσω από τον φούρνο", "address": "Παλιά πόλη, Πάφος",
+      "description": "Ένα περίπτερο με κάμερα στη γωνία, και το βανάκι της διανομής παρκαρισμένο δίπλα στους κάδους. Ο περιπτεράς λέει ότι η καταγραφή είναι κάπου στον παλιό του υπολογιστή.",
+      "searchMinutes": 45, "evidenceIds": ["camera", "van"]
+    },
+    {
+      "id": "flat", "city": "paphos", "name": "Το διαμέρισμα του ανιψιού", "address": "Κάτω Πάφος",
+      "description": "Δεύτερος όροφος, πάνω από ένα κλειστό μαγαζί. Ο Στέλιος δεν απαντά στο κουδούνι. Η σπιτονοικοκυρά σάς ανοίγει.",
+      "searchMinutes": 25, "evidenceIds": ["trainers", "note"]
+    }
+  ],
+  "evidence": [
+    { "id": "safe", "title": "Το χρηματοκιβώτιο", "text": "Ανοιχτό, χωρίς ούτε μια γρατζουνιά. Δεν το έσπασε κανείς: το άνοιξαν με τον κωδικό." },
+    { "id": "prints", "title": "Αλεύρι στο πάτωμα", "text": "Πατημασιές από αθλητικά παπούτσια, νούμερο 44, από το χρηματοκιβώτιο ως την πίσω πόρτα." },
+    { "id": "camera", "title": "Η κάμερα του περιπτέρου", "text": "Στις 04:12 ένας άντρας με κουκούλα βγαίνει από την πίσω πόρτα του φούρνου με μια σακούλα. Φορά άσπρα αθλητικά." },
+    { "id": "van", "title": "Το βανάκι της διανομής", "text": "Το GPS του βανακιού: ο Γιάννης, ο διανομέας, ήταν στον μύλο στη Γεροσκήπου από τις 03:30 ως τις 04:45.", "revealsCharacterIds": ["giannis"], "mentionsCharacterIds": ["giannis"] },
+    { "id": "trainers", "title": "Τα αθλητικά στο μπαλκόνι", "text": "Ένα ζευγάρι άσπρα αθλητικά, νούμερο 44, πλυμένα και ακόμη υγρά, στο κάγκελο του μπαλκονιού." },
+    { "id": "note", "title": "Ένα σημείωμα στο τραπέζι", "text": "«Μέχρι την Παρασκευή τα 8.000. Αλλιώς ξέρεις.» Χωρίς υπογραφή." }
+  ],
+  "calls": [
+    {
+      "id": "demo-call", "characterId": "marina", "displayName": "Μαρίνα Χριστοδούλου", "displaySubtitle": "η υπάλληλος του φούρνου",
+      "audioKey": "demo-call",
+      "transcript": "Η Μαρίνα είμαι, από τον φούρνο. Θυμήθηκα κάτι. Χθες ο κύριος Ανδρέας ήταν θυμωμένος. Μου είπε ότι ο Στέλιος, ο ανιψιός του, του ζήτησε πάλι λεφτά, και ότι του είπε όχι. Και κάτι ακόμη. Πριν από μια βδομάδα άλλαξε τον κωδικό στο χρηματοκιβώτιο. Τον καινούργιο δεν τον ήξερα εγώ. Τον ήξερε μόνο η οικογένεια. Η κόρη του σπουδάζει στην Αθήνα.",
+      "trigger": { "type": "onMinutesSpent", "minutes": 40 },
+      "delaySeconds": 2
+    }
+  ],
+  "solution": {
+    "culpritId": "stelios",
+    "nobody": { "label": "Κανείς από αυτούς", "detail": "Ήταν ληστεία από κάποιον άγνωστο, όπως λέει η αστυνομία." },
+    "motive": "Χρωστούσε οκτώ χιλιάδες ως την Παρασκευή, και ο θείος του είχε πει όχι.",
+    "motiveOptions": [
+      { "id": "debt", "text": "Χρωστούσε λεφτά που δεν είχε", "revealedBy": { "evidenceIds": ["note"], "heardCallIds": ["demo-call"] } },
+      { "id": "job", "text": "Ήθελε τον φούρνο για τον εαυτό του", "decoy": true },
+      { "id": "revenge", "text": "Εκδίκηση για μια παλιά προσβολή", "decoy": true }
+    ],
+    "correctMotiveId": "debt",
+    "requiredEvidenceIds": ["safe", "prints", "trainers", "note"],
+    "tiers": [
+      { "minScore": 0, "title": "Ο λάθος άνθρωπος", "text": "Το χρηματοκιβώτιο ανοίχτηκε με τον καινούργιο κωδικό, που τον ήξερε μόνο η οικογένεια. Ο Γιάννης ήταν στον μύλο. Η Μαρίνα δεν ήξερε τον κωδικό. Ο Στέλιος είχε τα αθλητικά, το χρέος και τον κωδικό." },
+      { "minScore": 1, "title": "Το σωστό όνομα, όχι όλη η απόδειξη", "text": "Ο ένοχος είναι ο Στέλιος. Όμως μια κατηγορία στέκει μόνο με τον σωστό λόγο και με τις αποδείξεις στο χέρι: τον κωδικό που ήξερε μόνο η οικογένεια, το αλεύρι, τα αθλητικά στο μπαλκόνι του και το σημείωμα στο τραπέζι του. Χρωστούσε λεφτά που δεν είχε." },
+      { "minScore": 6, "title": "Λύσατε την υπόθεση", "text": "Ο Στέλιος ήξερε τον καινούργιο κωδικό, γιατί ήταν οικογένεια. Χρωστούσε οκτώ χιλιάδες ως την Παρασκευή, και ο θείος του είχε πει όχι. Τα αθλητικά του, νούμερο 44, άφησαν το αλεύρι ως την πίσω πόρτα. Τα έπλυνε. Το αλεύρι όμως έμεινε στις ραφές." }
+    ]
+  },
+  "site": {
+    "kicker": "ΜΙΝΙ ΥΠΟΘΕΣΗ · ΠΑΦΟΣ",
+    "images": { "bakery": "demo-bakery.jpg", "alley": "demo-alley.jpg", "flat": "demo-flat.jpg" },
+    "short": { "bakery": "Φούρνος", "alley": "Στενό", "flat": "Διαμέρισμα" },
+    "map": { "bakery": [92, 112], "alley": [58, 38], "flat": [252, 70] },
+    "audio": {
+      "intro": "intro",
+      "evidence": { "safe": "ev-safe", "prints": "ev-prints", "camera": "ev-camera", "van": "ev-van", "trainers": "ev-trainers", "note": "ev-note" },
+      "tiers": { "0": "end-wrong", "1": "end-half", "6": "end-solved" },
+      "time": "end-time"
+    },
+    "cctv": {
+      "camera": {
+        "clip": "media/video/cctv-kiosk.mp4",
+        "camera": "ΚΑΜΕΡΑ 01 — ΠΕΡΙΠΤΕΡΟ ΓΩΝΙΑΣ",
+        "date": "ΤΡΙ 13/10",
+        "eventAt": "04:12:20",
+        "coverage": "Η κάμερα του περιπτέρου βλέπει το στενό και την πίσω πόρτα του φούρνου. Μέσα στον φούρνο δεν βλέπει.",
+        "event": "ΑΤΟΜΟ ΜΕ ΚΟΥΚΟΥΛΑ · ΠΙΣΩ ΠΟΡΤΑ ΦΟΥΡΝΟΥ"
+      }
+    },
+    "timeEnding": { "title": "Ο χρόνος τελείωσε", "text": "Η υπόθεση κλείνει ως ληστεία από άγνωστο. Κάπου στην Πάφο, ένα ζευγάρι άσπρα αθλητικά στεγνώνει σε ένα μπαλκόνι." },
+    "place": { "lon": 32.42, "lat": 34.775, "city": "Πάφος" }
+  }
+}

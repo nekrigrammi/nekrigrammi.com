@@ -1,0 +1,8 @@
+# Raw Picsart takes and generated pictures: the cut, levelled copies live in media/.
+src-img/
+src-audio/
+# Local leftovers
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
