@@ -564,3 +564,17 @@ body.menu-open .nav .nav-play { margin-top: 12px; }
   .nav .nav-play { color: var(--text); }
   .nav .nav-cta { color: #fff; }
 }
+
+/* Medium screens (most laptops, 960–1099 px): not enough room for the full menu, so the
+   bar works as on a phone (name, «Κατεβάστε», menu). Social icons in the bar only from 1200. */
+.btn, .nav a, .brand-name { white-space: nowrap; }
+@media (min-width: 960px) and (max-width: 1099px) {
+  .nav { display: none; }
+  .nav-toggle { display: grid; }
+  .header-get { display: inline-flex; }
+}
+@media (min-width: 960px) and (max-width: 1199px) {
+  .nav-social { display: none; }
+  .nav { gap: 22px; }
+}
+body.menu-open .nav-social { display: flex; }
