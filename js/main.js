@@ -373,6 +373,16 @@
     .map(([k, label]) => `<li><a href="${esc(CFG.social[k])}" target="_blank" rel="noopener" aria-label="${label}">${brand(k)}</a></li>`).join('');
   $('#socialFinal').innerHTML = social;
   $('#socialFooter').innerHTML = social;
+  $('#socialHeader').innerHTML = social;
+  $('#socialHero').innerHTML = social;
+  // The quiet line under the hero: the stores (soon, or links once they exist) and the profiles.
+  const live = STORES.filter((s) => stores[s.key]);
+  const heroStores = $('#heroStores');
+  heroStores.innerHTML = `${STORES.map((s) => brand(s.icon)).join('')}<span>${live.length
+    ? `Διαθέσιμο στο ${live.map((s) => s.name).join(' και στο ')}`
+    : 'Σύντομα στο Google Play και στο App Store'}</span>`;
+  if (live.length === 1) { heroStores.href = stores[live[0].key]; heroStores.target = '_blank'; heroStores.rel = 'noopener'; }
+  $('#heroLinks').hidden = false;
   $('#followLabel').hidden = !profiles.length;
   // Until the app is in the stores, the answer to «Πού θα τη βρω;» is where to follow it.
   if (!stores.android && !stores.ios && profiles.length) {
