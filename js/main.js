@@ -365,7 +365,7 @@
     ? `<a class="store" href="${esc(stores[s.key])}" target="_blank" rel="noopener">${brand(s.icon)}<span><small>${s.small}</small>${s.name}</span></a>`
     : `<span class="store soon">${brand(s.icon)}<span><small>Σύντομα στο</small>${s.name}</span></span>`).join('');
   if (stores.android || stores.ios) {
-    $('[data-config=stores-text]').textContent = `Στο ${[stores.android && 'Google Play', stores.ios && 'App Store'].filter(Boolean).join(' και στο ')}. Τα κουμπιά είναι στο τέλος της σελίδας.`;
+    $('[data-config=stores-text]').textContent = `Στο ${[stores.android && 'Google Play', stores.ios && 'App Store'].filter(Boolean).join(' και στο ')}. Τα κουμπιά είναι στην αρχή και στο τέλος της σελίδας.`;
   }
   const SOCIAL = [['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['facebook', 'Facebook'], ['youtube', 'YouTube'], ['x', 'X']];
   const profiles = SOCIAL.filter(([k]) => (CFG.social || {})[k]);
@@ -381,8 +381,26 @@
   heroStores.innerHTML = `${STORES.map((s) => brand(s.icon)).join('')}<span>${live.length
     ? `Διαθέσιμο στο ${live.map((s) => s.name).join(' και στο ')}`
     : 'Σύντομα στο Google Play και στο App Store'}</span>`;
-  if (live.length === 1) { heroStores.href = stores[live[0].key]; heroStores.target = '_blank'; heroStores.rel = 'noopener'; }
   $('#heroLinks').hidden = false;
+
+  // Launch day switches itself on: once a store link is in config.js, the store
+  // buttons stand under the hero's buttons, the quiet «Σύντομα» line keeps only the
+  // profiles, and the header's «Παίξτε τώρα» becomes «Κατεβάστε», which takes a phone
+  // straight to its own store and a computer to the buttons.
+  if (live.length) {
+    const badges = $('#heroBadges');
+    badges.innerHTML = live.map((s) => `<a class="store store-small" href="${esc(stores[s.key])}" target="_blank" rel="noopener">${brand(s.icon)}<span><small>${s.small}</small>${s.name}</span></a>`).join('');
+    badges.hidden = false;
+    heroStores.hidden = true;
+    const cta = $('#navCta');
+    cta.textContent = 'Κατεβάστε';
+    const ua = navigator.userAgent;
+    const ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    const android = /Android/.test(ua);
+    const direct = (android && stores.android) || (ios && stores.ios);
+    if (direct) { cta.href = direct; cta.target = '_blank'; cta.rel = 'noopener'; }
+    else cta.href = '#download';
+  }
   $('#followLabel').hidden = !profiles.length;
   // Until the app is in the stores, the answer to «Πού θα τη βρω;» is where to follow it.
   if (!stores.android && !stores.ios && profiles.length) {
