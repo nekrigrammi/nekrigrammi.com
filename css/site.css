@@ -551,3 +551,16 @@ body.menu-open .nav-social a { width: 44px; height: 44px; border: 1px solid var(
 .store-small { min-height: 48px; padding: 0 16px; border-radius: 12px; font-size: 15px; }
 .store-small svg { width: 20px; height: 20px; }
 .hero-stores[hidden] { display: none; }
+
+/* «Κατεβάστε» always in sight: in the bar on phones (beside the menu), last in the nav on desktop */
+.header-get { margin-left: auto; min-height: 38px; padding: 0 14px; font-size: 14px; }
+.nav-toggle { margin-left: 4px; }
+body.menu-open .header-get { visibility: hidden; }
+body.menu-open .nav .nav-play, body.menu-open .nav .nav-cta { font-size: 18px; min-height: 50px; padding: 0 22px; }
+body.menu-open .nav .nav-play { margin-top: 12px; }
+@media (max-width: 359px) { .brand-name { display: none; } }
+@media (min-width: 960px) {
+  .header-get { display: none; }
+  .nav .nav-play { color: var(--text); }
+  .nav .nav-cta { color: #fff; }
+}

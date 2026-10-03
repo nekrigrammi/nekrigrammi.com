@@ -392,14 +392,14 @@
     badges.innerHTML = live.map((s) => `<a class="store store-small" href="${esc(stores[s.key])}" target="_blank" rel="noopener">${brand(s.icon)}<span><small>${s.small}</small>${s.name}</span></a>`).join('');
     badges.hidden = false;
     heroStores.hidden = true;
-    const cta = $('#navCta');
-    cta.textContent = 'Κατεβάστε';
     const ua = navigator.userAgent;
     const ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
     const android = /Android/.test(ua);
     const direct = (android && stores.android) || (ios && stores.ios);
-    if (direct) { cta.href = direct; cta.target = '_blank'; cta.rel = 'noopener'; }
-    else cta.href = '#download';
+    for (const cta of [$('#navCta'), $('#headerGet')]) {
+      if (direct) { cta.href = direct; cta.target = '_blank'; cta.rel = 'noopener'; }
+      else cta.href = '#download';
+    }
   }
   $('#followLabel').hidden = !profiles.length;
   // Until the app is in the stores, the answer to «Πού θα τη βρω;» is where to follow it.
